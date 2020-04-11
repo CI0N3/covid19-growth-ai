@@ -9,3 +9,7 @@ print("This is my virus-exp-growth branch")
 
 print("Hello")
 
+#given the number of infected
+#and given the r value
+#and given the time-frame
+#then calculate number of infected in the time-frame
