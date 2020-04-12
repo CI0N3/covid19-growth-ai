@@ -1,13 +1,14 @@
-def get_number(starting_number = float(input("What is the starting number? ")), r_value = float(input("What is the R value? ")), days = int(input("How many days? ")), infected = ""):
+def get_number(starting_number, r_value, days, infected = ""):
     for i in range(days+1):
         infected += str(starting_number * r_value ** i) + " "
     return infected
 
-print(get_number())
+def get_r(starting_number, infected, days):
+    return (infected/starting_number) ** (1/days)
 
-print("This is my virus-exp-growth branch")
+print(get_r(float(input("What is the starting number? ")), int(input("What is the current number of infected? ")), int(input("How many days? "))))
 
-print("Hello")
+print(get_number(float(input("What is the starting number? ")), float(input("What is the R value? ")), int(input("How many days? "))))
 
 #given the number of infected
 #and given the r value
