@@ -1,16 +1,34 @@
-def get_number(starting_number, r_value, days, infected = ""):
-    for i in range(days+1):
-        infected += str(starting_number * r_value ** i) + " "
-    return infected
+import pygame, random, sys
+pygame.init()
 
-def get_r(starting_number, infected, days):
-    return (infected/starting_number) ** (1/days)
+width = 768
+height = 480
+size = 3
+window = pygame.display.set_mode((width, height))
+pygame.display.set_caption("Virus Transmission")
 
-print(get_r(float(input("What is the starting number? ")), int(input("What is the current number of infected? ")), int(input("How many days? "))))
+class human:
+    def __init__(self):
+        self.x = random.randrange(3, width-3)
+        self.y = random.randrange(3, height-3)
 
-print(get_number(float(input("What is the starting number? ")), float(input("What is the R value? ")), int(input("How many days? "))))
+    def drawimage(self):
+        pygame.draw.rect(window, (0, 128, 0), (self.x, self.y, size, size), 0)
 
-#given the number of infected
-#and given the r value
-#and given the time-frame
-#then calculate number of infected in the time-frame
+humans = []
+for i in range(200):
+    Human = human()
+    humans.append(Human)
+
+def movement():
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+        window.fill((0, 0, 0))
+        for i in humans:
+            i.drawimage()
+        pygame.display.update()
+
+movement()
